@@ -32,3 +32,18 @@ class SublayerConnection(nn.Module):
 
     def forward(self, x, sublayer):
         return x + self.dropout(sublayer(self.norm(x)))
+
+
+class EncoderLayer(nn.Module):
+    """编码器由自注意力和前馈网络组成"""
+    def __init__(self, size, self_attn, feed_forward, dropout):
+        super().__init__()
+        self.self_attn = self.self_attn
+        self.feed_forward = feed_forward
+        self.sublayer = clones(SublayerConnection(size, dropout), 2)
+        self.size = size
+
+    def forward(self, x, mask):
+        """架构图左侧的连接"""
+        # 自注意力
+        x = self.sublayer[0](x, lambda x: self.self_attn(x, x, x, mask))
