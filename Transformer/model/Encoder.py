@@ -6,13 +6,19 @@
 from torch import nn
 
 from pytorch_model_study.Transformer.blocks.EncoderLayer import EncoderLayer
-from pytorch_model_study.Transformer.embedding.PositionalEncoding import PositionalEncoding
+from pytorch_model_study.Transformer.embedding.TransformerEmbedding import TransformerEmbedding
 
 
 class Encoder(nn.Module):
-    def __init__(self, max_len, d_model, ffn_hidden, n_head, n_layers, drop_prob, device):
+    def __init__(self, enc_vocab_size, max_len, d_model, ffn_hidden, n_head, n_layers, drop_prob, device):
         super().__init__()
-        self.emb = PositionalEncoding(d_model, max_len, device)
+        self.emb = TransformerEmbedding(
+            d_model,
+            max_len,
+            enc_vocab_size,
+            drop_prob,
+            device
+        )
         self.layers = nn.ModuleList(
             [EncoderLayer(d_model, ffn_hidden, n_head, drop_prob)
              for _ in range(n_layers)]
