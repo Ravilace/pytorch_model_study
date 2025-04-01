@@ -19,7 +19,7 @@ class ScaleDotProductAttention(nn.Module):
         super().__init__()
         self.softmax = nn.Softmax(dim=-1)
 
-    def forward(self, q, k, v, mask=None, e=1e-12):
+    def forward(self, q, k, v, mask=None):
         # 输入是一个四维的张量
         # [batch_size, head, length, d_tensor]
         batch_size, head, length, d_tensor = k.size()
