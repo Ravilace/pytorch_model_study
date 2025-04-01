@@ -24,6 +24,7 @@ class Decoder(nn.Module):
              for _ in range(n_layers)]
         )
         self.linear = nn.Linear(d_model, dec_vocab_size)
+        self.softmax = nn.Softmax(dim=-1)
 
     def forward(self, trg, src, trg_mask, src_mask):
         trg = self.emb(trg)
@@ -31,5 +32,6 @@ class Decoder(nn.Module):
         for layer in self.layers:
             trg = layer(trg, src, trg_mask, src_mask)
 
-        output = self.self.linear(trg)
+        linear_trg = self.linear(trg)
+        output = self.softmax(linear_trg)
         return output
