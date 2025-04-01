@@ -4,7 +4,8 @@
 # @File    : MultiHeadAttention.py
 # @Software: PyCharm
 from torch import nn
-from pytorch_model_study.Transformer.ScaleDotProductAttention import ScaleDotProductAttention
+
+from pytorch_model_study.Transformer.layers.ScaleDotProductAttention import ScaleDotProductAttention
 
 
 class MultiHeadAttention(nn.Module):

@@ -5,9 +5,9 @@
 # @Software: PyCharm
 from torch import nn
 
-from pytorch_model_study.Transformer.LayerNorm import LayerNorm
-from pytorch_model_study.Transformer.MultiHeadAttention import MultiHeadAttention
-from pytorch_model_study.Transformer.PositionWiseFeedForward import PositionWiseFeedForward
+from pytorch_model_study.Transformer.layers.LayerNorm import LayerNorm
+from pytorch_model_study.Transformer.layers.MultiHeadAttention import MultiHeadAttention
+from pytorch_model_study.Transformer.layers.PositionWiseFeedForward import PositionWiseFeedForward
 
 
 class EncoderLayer(nn.Module):

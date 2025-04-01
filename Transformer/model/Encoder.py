@@ -5,8 +5,8 @@
 # @Software: PyCharm
 from torch import nn
 
-from pytorch_model_study.Transformer.EncoderLayer import EncoderLayer
-from pytorch_model_study.Transformer.PositionalEncoding import PositionalEncoding
+from pytorch_model_study.Transformer.blocks.EncoderLayer import EncoderLayer
+from pytorch_model_study.Transformer.embedding.PositionalEncoding import PositionalEncoding
 
 
 class Encoder(nn.Module):
