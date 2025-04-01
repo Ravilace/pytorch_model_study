@@ -18,10 +18,10 @@ class Encoder(nn.Module):
              for _ in range(n_layers)]
         )
 
-    def forward(self, x):
+    def forward(self, x, src_mask):
         x = self.emb(x)
 
         for layer in self.layers:
-            x = layer(x)
+            x = layer(x, src_mask)
 
         return x
